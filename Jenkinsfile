@@ -13,16 +13,12 @@ pipeline {
 
 stage('Source-Composition-Analysis') {
     steps {
-        withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
-            sh '''
-            rm -f owasp*
-            wget https://raw.githubusercontent.com/devopssecure/webapp/master/owasp-dependency-check.sh
-            chmod +x owasp-dependency-check.sh
-
-            export NVD_API_KEY=$NVD_API_KEY
-            ./owasp-dependency-check.sh
-            '''
-        }
+        sh '''
+        rm -f owasp*
+        wget https://raw.githubusercontent.com/devopssecure/webapp/master/owasp-dependency-check.sh
+        chmod +x owasp-dependency-check.sh
+        ./owasp-dependency-check.sh
+        '''
     }
 }
 
