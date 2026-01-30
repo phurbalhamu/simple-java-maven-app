@@ -1,13 +1,14 @@
 pipeline {
     agent any
 
-    stage('Secret Scan') {
-    steps {
-        sh 'trufflehog filesystem .'
-    }
-}
-    
     stages {
+
+        stage('Secret Scan') {
+            steps {
+                sh 'trufflehog filesystem .'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building the project'
