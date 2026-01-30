@@ -12,7 +12,7 @@ pipeline {
         
 stage('SCA Scan') {
     steps {
-        withCredentials([string(credentialsId: '7aa96eb5-840e-44fe-8f62-a036c441b74c', variable: 'NVD_API_KEY')]) {
+        withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
             sh '''
             rm -rf dependency-check-report
             mkdir -p dependency-check-report
@@ -20,7 +20,7 @@ stage('SCA Scan') {
 
             docker run --rm \
               -u root \
-              -e NVD_API_KEY=$NVD_API_KEY \
+              -e NVD_API_KEY=${NVD_API_KEY} \
               -v "$(pwd):/src" \
               owasp/dependency-check \
               --scan /src \
