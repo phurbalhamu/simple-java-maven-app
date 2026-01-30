@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    stage('Secret Scan') {
+    steps {
+        sh 'trufflehog filesystem .'
+    }
+}
+    
     stages {
         stage('Build') {
             steps {
