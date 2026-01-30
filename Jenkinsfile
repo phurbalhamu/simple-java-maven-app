@@ -12,20 +12,22 @@ pipeline {
         
 stage('SCA Scan') {
     steps {
-        echo 'Running Source Composition Analysis using OWASP Dependency-Check'
-        sh '''
-        rm -rf dependency-check-report
-        mkdir -p dependency-check-report
-        chmod 777 dependency-check-report
+        withCredentials([string(credentialsId: '7aa96eb5-840e-44fe-8f62-a036c441b74c', variable: 'NVD_API_KEY')]) {
+            sh '''
+            rm -rf dependency-check-report
+            mkdir -p dependency-check-report
+            chmod 777 dependency-check-report
 
-        docker run --rm \
-          -u root \
-          -v "$(pwd):/src" \
-          owasp/dependency-check \
-          --scan /src \
-          --format HTML \
-          --out /src/dependency-check-report
-        '''
+            docker run --rm \
+              -u root \
+              -e NVD_API_KEY=$NVD_API_KEY \
+              -v "$(pwd):/src" \
+              owasp/dependency-check \
+              --scan /src \
+              --format HTML \
+              --out /src/dependency-check-report
+            '''
+        }
     }
 }
 
