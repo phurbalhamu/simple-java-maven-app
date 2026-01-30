@@ -9,6 +9,16 @@ pipeline {
             }
         }
 
+
+        
+stage('SCA Scan') {
+    steps {
+        echo 'Running Source Composition Analysis'
+        sh 'owasp-dependency-check.sh --scan .'
+    }
+}
+        
+
         stage('Build') {
             steps {
                 echo 'Building the project'
