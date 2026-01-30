@@ -10,17 +10,16 @@ pipeline {
         }
 
         
-stage('SCA OWASP Dependency-Check Vulnerabilities') {
-      steps {
-        dependencyCheck additionalArguments: ''' 
-                    -o './'
-                    -s './'
-                    -f 'ALL' 
-                    --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
-        
-        dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-      }
+stage('Source-Composition-Analysis') {
+    steps {
+        sh '''
+        rm -f owasp*
+        wget https://raw.githubusercontent.com/devopssecure/webapp/master/owasp-dependency-check.sh
+        chmod +x owasp-dependency-check.sh
+        ./owasp-dependency-check.sh
+        '''
     }
+}
 
 
     
