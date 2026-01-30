@@ -9,12 +9,13 @@ pipeline {
             }
         }
 
-
         
 stage('SCA Scan') {
     steps {
-        echo 'Running Source Composition Analysis using OWASP Dependency-Check (Docker)'
+        echo 'Running Source Composition Analysis using OWASP Dependency-Check'
         sh '''
+        mkdir -p dependency-check-report
+
         docker run --rm \
           -v "$(pwd):/src" \
           owasp/dependency-check \
@@ -24,6 +25,7 @@ stage('SCA Scan') {
         '''
     }
 }
+
 
 
         
