@@ -14,9 +14,12 @@ stage('SCA Scan') {
     steps {
         echo 'Running Source Composition Analysis using OWASP Dependency-Check'
         sh '''
+        rm -rf dependency-check-report
         mkdir -p dependency-check-report
+        chmod 777 dependency-check-report
 
         docker run --rm \
+          -u root \
           -v "$(pwd):/src" \
           owasp/dependency-check \
           --scan /src \
