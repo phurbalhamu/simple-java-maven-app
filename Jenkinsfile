@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-        
+
 
 stage('Source-Composition-Analysis') {
     steps {
@@ -19,7 +19,7 @@ stage('Source-Composition-Analysis') {
             wget https://raw.githubusercontent.com/devopssecure/webapp/master/owasp-dependency-check.sh
             chmod +x owasp-dependency-check.sh
 
-            export 7aa96eb5-840e-44fe-8f62-a036c441b74c=$NVD_API_KEY
+            export NVD_API_KEY=$NVD_API_KEY
             ./owasp-dependency-check.sh
             '''
         }
