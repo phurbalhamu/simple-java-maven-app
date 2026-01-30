@@ -10,7 +10,6 @@ pipeline {
         }
 
 
-
 stage('Source-Composition-Analysis') {
     steps {
         sh '''
@@ -21,8 +20,6 @@ stage('Source-Composition-Analysis') {
         '''
     }
 }
-
-
 
 
     
