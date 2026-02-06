@@ -21,9 +21,3 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-
-        
-stage('Copy File') {
-        
-    }
-}
