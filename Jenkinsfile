@@ -22,5 +22,16 @@ pipeline {
             }
         }
 
+
+        stage('Copy File') {
+            steps {
+                sh '''
+                    mkdir -p $WORKSPACE/jen
+                    cp target/my-app-1.0-SNAPSHOT.jar $WORKSPACE/jen/
+                '''
+            }
+        }
+        
+
     }
 }
