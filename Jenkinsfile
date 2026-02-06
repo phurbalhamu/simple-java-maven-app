@@ -19,7 +19,7 @@ pipeline {
 stage('Check-Git-Secrets') {
     steps {
         sh '''
-            rm trufflehog || true
+            rm -f trufflehog || true
             trufflehog filesystem . --json --max-depth 50 > trufflehog.json
             cat trufflehog.json
 
