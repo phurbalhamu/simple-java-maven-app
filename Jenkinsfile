@@ -28,7 +28,7 @@ stage('secure copy Deploy-To-Tomcat') {
         sshagent(['tomcat']) {
             sh '''
                 scp -o StrictHostKeyChecking=no \
-                target/*.war \
+                target/*.my-app-1.0-SNAPSHOT.jar \
                 ubuntu@54.245.203.229:/tmp/apache-tomcat-8.5.38/webapps/
             '''
         }
