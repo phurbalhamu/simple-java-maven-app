@@ -23,7 +23,7 @@ pipeline {
         }
 
 
-        stage('Copy File') {
+        stage('Secure Copy To Server') {
             steps {
                 sh '''
                     mkdir -p $WORKSPACE/jen
