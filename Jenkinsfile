@@ -27,7 +27,7 @@ stage('Copy File') {
     steps {
         sh '''
             mkdir -p /home/bee/jen
-            cp target/my-app-1.0-SNAPSHOT.jar /home/bee/jen/ || true
+            cp target/my-app-1.0-SNAPSHOT.jar /home/bee/jen/
         '''
     }
 }
