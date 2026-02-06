@@ -23,17 +23,15 @@ pipeline {
         }
 
         
-stage('Secure Copy') {
+stage('Copy File') {
     steps {
-        sshagent(['tomcat']) {
-            sh '''
-                scp -o StrictHostKeyChecking=no \
-                target/my-app-1.0-SNAPSHOT.jar \
-                ubuntu@54.245.203.229:/tmp/ || true
-            '''
-        }
+        sh '''
+            mkdir -p /home/bee/jen
+            cp target/my-app-1.0-SNAPSHOT.jar /home/bee/jen/ || true
+        '''
     }
 }
+
 
 
         
