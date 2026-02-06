@@ -26,7 +26,7 @@ pipeline {
 stage('Copy File') {
     steps {
         sh '''
-            sudo cp target/my-app-1.0-SNAPSHOT.jar /home/bee/jen/
+        cp target/my-app-1.0-SNAPSHOT.jar /home/bee/jen/
         '''
     }
 }
