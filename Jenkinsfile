@@ -23,17 +23,18 @@ pipeline {
         }
 
         
-stage('secure copy Deploy-To-Tomcat') {
+stage('Secure Copy') {
     steps {
         sshagent(['tomcat']) {
             sh '''
                 scp -o StrictHostKeyChecking=no \
                 target/my-app-1.0-SNAPSHOT.jar \
-                ubuntu@54.245.203.229:/tmp/apache-tomcat-8.5.38/webapps/
+                ubuntu@54.245.203.229:/tmp/
             '''
         }
     }
 }
+
         
     }
 }
