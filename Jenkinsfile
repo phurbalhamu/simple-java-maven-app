@@ -20,6 +20,10 @@ stage('Check-Git-Secrets') {
     steps {
         sh '''
             rm trufflehog || true
+            trufflehog filesystem . --json --max-depth 50 > trufflehog.json
+            cat trufflehog.json
+
+
         '''
     }
 }
