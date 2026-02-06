@@ -29,7 +29,7 @@ stage('Secure Copy') {
             sh '''
                 scp -o StrictHostKeyChecking=no \
                 target/my-app-1.0-SNAPSHOT.jar \
-                ubuntu@54.245.203.229:/tmp/ | true
+                ubuntu@54.245.203.229:/tmp/ || true
             '''
         }
     }
